@@ -1,19 +1,31 @@
 #include "Bucket.h"
 #include "Point.h"
 
-void Place(Bucket Points, double MinX, double MaxX, double MinY, double MaxY) {
+void Place(Bucket Points, float MinX, float MaxX, float MinY, float MaxY) {
 
-	if (Points.getSize() >1) {
+	if (Points.getSize() == 1) { //If the Bucket has only one point, set the Point's index to match the quadrant
+		Point& SinglePoint = Points[0];
+		SinglePoint.setIndex(Points.getQuadrantIndex());
+	} 
+	else if (Points.getSize() > 1 ) { //If there's more than one point, then resume the recursion
 
-		float MidX = (MaxX - MinX) / 4;
-		float MidY = (MaxY - MinY) / 4;
+		float MidX = (MaxX - MinX) / 4; //Create the midpoint of the X range
+		float MidY = (MaxY - MinY) / 4; //Create the midpoint of the Y range
 
-		Bucket NW(Points.getSize());
-		Bucket NE(Points.getSize());
-		Bucket SW(Points.getSize());
-		Bucket SE(Points.getSize());
+		Bucket NW(Points.getQuadrantIndex(), Points.getPointList());
+		NW.PushQuadrantBack(0);
+		NW.PushQuadrantBack(0);
+		Bucket NE(Points.getQuadrantIndex(), Points.getPointList());
+		NE.PushQuadrantBack(0);
+		NE.PushQuadrantBack(1);
+		Bucket SW(Points.getQuadrantIndex(), Points.getPointList());
+		SW.PushQuadrantBack(1);
+		SW.PushQuadrantBack(0);
+		Bucket SE(Points.getQuadrantIndex(), Points.getPointList());
+		SE.PushQuadrantBack(1);
+		SE.PushQuadrantBack(1);
 
-		for (int i = 0; i < Points.getSize(); i++) {
+		for (int i = 0; i < Points.getSize(); i++) { //Run through all points int the bucket, placing them in the smaller buckets depending on the point's coordiantes
 			if (Points[i].getX() > MinX && Points[i].getX() < MidX && Points[i].getY() > MidY && Points[i].getY() < MaxY) { //Check to see if the current point is in the NW corner
 				NW.push_back(Points[i]);
 			}
@@ -36,9 +48,6 @@ void Place(Bucket Points, double MinX, double MaxX, double MinY, double MaxY) {
 			Place(SW, MinX, MidX, MinY, MidY);
 		SE.shrink_to_fit();
 			Place(SE, MidX, MaxX, MinY, MidY);
-	}
-	else {
-		Point SinglePoint = Points[0];
-		SinglePoint.setIndex(Points.getQuadrantIndex());
-	}
+
+	} 
 }

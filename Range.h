@@ -4,13 +4,13 @@
 
 class Range {
 public:
-	Range(double Min, double Max);
+	Range(float Min, float Max);
 	~Range();
 
-	double getMax();
-	double getMin();
+	float getMax();
+	float getMin();
 
 private:
-	double Min;
-	double Max;
+	float Min;
+	float Max;
 };

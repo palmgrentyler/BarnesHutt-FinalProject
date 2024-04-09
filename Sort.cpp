@@ -3,9 +3,9 @@
 #include <algorithm>
 
 Range SortY(Bucket Original) {
-	std::vector<Point&> ySorted = Original.getPointList();
-	double Min = 0;
-	double Max = 0;
+	std::vector<Point>& ySorted = Original.getPointList();
+	float Min = 0;
+	float Max = 0;
 
 	for (int i = 0; i < ySorted.size(); i++) {
 		if (ySorted[i].getY() > Max) {
@@ -21,9 +21,9 @@ Range SortY(Bucket Original) {
 }
 
 Range SortX(Bucket Original) {
-	std::vector<Point&> xSorted = Original.getPointList();
-	double Min = 0;
-	double Max = 0;
+	std::vector<Point>& xSorted = Original.getPointList();
+	float Min = 0;
+	float Max = 0;
 
 	for (int i = 0; i < xSorted.size(); i++) {
 		if (xSorted[i].getX() > Max) {

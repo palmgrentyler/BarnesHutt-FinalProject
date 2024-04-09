@@ -1,16 +1,16 @@
 #include "Range.h"
 
-Range::Range(double Min, double Max) :
+Range::Range(float Min, float Max) :
 Min(Min), Max(Max) {}
 
 Range::~Range() {};
 
-double Range::getMax()
+float Range::getMax()
 {
     return Max;
 }
 
-double Range::getMin() 
+float Range::getMin() 
 {
     return Min;
 }

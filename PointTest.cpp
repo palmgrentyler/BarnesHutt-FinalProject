@@ -3,11 +3,11 @@
 #include <sstream>
 
 TEST(Constructor, Point) {
-    double x = 4;
-    double y = 10;
-    double mass = 30;
-    double vecX = 43;
-    double vecY = 0.0;
+    float x = 4;
+    float y = 10;
+    float mass = 30;
+    float vecX = 43;
+    float vecY = 0.0;
 
     Point p{x, y, mass, vecX, vecY}; //Contruct the point
     CHECK_DOUBLES_EQUAL(4.0, p.getX(), 0.0001); //Check the contents
@@ -18,18 +18,18 @@ TEST(Constructor, Point) {
 }
 
 TEST(OverwriteValues, Point) {
-    double x = 4;
-    double y = 10;
-    double mass = 30;
-    double vecX = 43;
-    double vecY = 0.0;
+    float x = 4;
+    float y = 10;
+    float mass = 30;
+    float vecX = 43;
+    float vecY = 0.0;
 
     Point p{ x, y, mass, vecX, vecY }; //Contruct the point
 
-    p.setX(8.0);
-    p.setY(60.4);
-    p.setVecX(743.5);
-    p.setVecY(31.34);
+    p.setX(8.0f);
+    p.setY(60.4f);
+    p.setVecX(743.5f);
+    p.setVecY(31.34f);
 
     CHECK_DOUBLES_EQUAL(8.0, p.getX(), 0.0001); //Check the contents
     CHECK_DOUBLES_EQUAL(60.4, p.getY(), 0.0001);
