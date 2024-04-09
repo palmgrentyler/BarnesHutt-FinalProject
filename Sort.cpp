@@ -9,10 +9,10 @@ Range SortY(Bucket Original) {
 
 	for (int i = 0; i < ySorted.size(); i++) {
 		if (ySorted[i].getY() > Max) {
-			Max = ySorted[i].getY();
+			Max = static_cast<float>(ySorted[i].getY());
 		}
 		else if (ySorted[i].getY() < Min) {
-			Min = ySorted[i].getY();
+			Min = static_cast<float>(ySorted[i].getY());
 		}
 	}
 
@@ -27,10 +27,10 @@ Range SortX(Bucket Original) {
 
 	for (int i = 0; i < xSorted.size(); i++) {
 		if (xSorted[i].getX() > Max) {
-			Max = xSorted[i].getX();
+			Max = static_cast<float>(xSorted[i].getX());
 		}
 		else if (xSorted[i].getX() < Min) {
-			Min = xSorted[i].getX();
+			Min = static_cast<float>(xSorted[i].getX());
 		}
 	}
 	Range rangeX(Min, Max);

@@ -1,9 +1,9 @@
 #include "Bucket.cpp"
 #include "TestHarness.h"
+#include "Point.cpp"
 
 TEST(ConstrucitonTest, Bucket) {
-	std::vector<bool> index;
-
+	
 	Point p1(rand(), rand(), rand(), rand(), rand());
 	Point p2(rand(), rand(), rand(), rand(), rand());
 	Point p3(rand(), rand(), rand(), rand(), rand());

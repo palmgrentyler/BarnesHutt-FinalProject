@@ -9,19 +9,19 @@ void Place(Bucket Points, float MinX, float MaxX, float MinY, float MaxY) {
 	} 
 	else if (Points.getSize() > 1 ) { //If there's more than one point, then resume the recursion
 
-		float MidX = (MaxX - MinX) / 4; //Create the midpoint of the X range
-		float MidY = (MaxY - MinY) / 4; //Create the midpoint of the Y range
+		float MidX = static_cast<float>((MaxX - MinX) / 4); //Create the midpoint of the X range
+		float MidY = static_cast<float>((MaxY - MinY) / 4); //Create the midpoint of the Y range
 
-		Bucket NW(Points.getQuadrantIndex(), Points.getPointList());
+		Bucket NW(Points.getQuadrantIndex(), Points.getPointList()); //Create an empty NW quadrant bucket (00) that has the parent's quadrant ID and an empty Point vector that's the same size
 		NW.PushQuadrantBack(0);
 		NW.PushQuadrantBack(0);
-		Bucket NE(Points.getQuadrantIndex(), Points.getPointList());
+		Bucket NE(Points.getQuadrantIndex(), Points.getPointList()); //Create an empty NE quadrant bucket (01) that has the parent's quadrant ID and an empty Point vector that's the same size
 		NE.PushQuadrantBack(0);
 		NE.PushQuadrantBack(1);
-		Bucket SW(Points.getQuadrantIndex(), Points.getPointList());
+		Bucket SW(Points.getQuadrantIndex(), Points.getPointList()); //Create an empty SW quadrant bucket (10) that has the parent's quadrant ID and an empty Point vector that's the same size
 		SW.PushQuadrantBack(1);
 		SW.PushQuadrantBack(0);
-		Bucket SE(Points.getQuadrantIndex(), Points.getPointList());
+		Bucket SE(Points.getQuadrantIndex(), Points.getPointList()); //Create an empty SE quadrant bucket (11) that has the parent's quadrant ID and an empty Point vector that's the same size
 		SE.PushQuadrantBack(1);
 		SE.PushQuadrantBack(1);
 

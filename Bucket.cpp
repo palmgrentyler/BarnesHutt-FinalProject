@@ -1,8 +1,9 @@
 #include "Bucket.h"
 
 Bucket::Bucket(std::vector <bool>QuadIndex, std::vector <Point>& BucketPointList) //Creation of a Bucket with a vector of points and a given quadrent index
-	:  quadrantIndex(QuadIndex), pointList(BucketPointList) {};
-
+	:  quadrantIndex(QuadIndex), pointList(BucketPointList) {
+	std::fill(pointList.begin(), pointList.end(), nullptr);
+};
 
 Bucket::Bucket(std::vector <Point>& BucketPointList)//Creation of a Bucket with only a vector of points
 	: pointList(BucketPointList) {};
@@ -29,7 +30,7 @@ std::vector<Point>& Bucket::getPointList(){ //returns the full vector of points
 	return pointList;
 }
 
-Point& Bucket::operator[](int index)
+Point& Bucket::operator[](int index) //returns the point at a given index
 {
 	return pointList[index];
 }
