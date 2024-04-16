@@ -69,7 +69,7 @@ void Bucket::barnesHuttSort(Bucket *_parent, Point *point_list, unsigned num_poi
 
 		sort_bucket = &sort_buckets[sort_index];
 
-		sort_bucket->indices[sort_bucket->num_indices] = i;
+		sort_bucket->indices[sort_bucket->num_indices] = point_index;
 		sort_bucket->num_indices++;
 	}
 
