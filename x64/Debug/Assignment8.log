@@ -1,15 +1,49 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Assignment8.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-BucketTest.obj : error LNK2005: "public: __cdecl Bucket::Bucket(class std::vector<class Point,class std::allocator<class Point> > &)" (??0Bucket@@QEAA@AEAV?$vector@VPoint@@V?$allocator@VPoint@@@std@@@std@@@Z) already defined in Bucket.obj
-BucketTest.obj : error LNK2005: "public: __cdecl Bucket::Bucket(class std::vector<bool,class std::allocator<bool> >,class std::vector<class Point,class std::allocator<class Point> > &)" (??0Bucket@@QEAA@V?$vector@_NV?$allocator@_N@std@@@std@@AEAV?$vector@VPoint@@V?$allocator@VPoint@@@std@@@2@@Z) already defined in Bucket.obj
-BucketTest.obj : error LNK2005: "public: __cdecl Bucket::~Bucket(void)" (??1Bucket@@QEAA@XZ) already defined in Bucket.obj
-BucketTest.obj : error LNK2005: "public: class Point & __cdecl Bucket::operator[](int)" (??ABucket@@QEAAAEAVPoint@@H@Z) already defined in Bucket.obj
-BucketTest.obj : error LNK2005: "public: void __cdecl Bucket::PushQuadrantBack(bool)" (?PushQuadrantBack@Bucket@@QEAAX_N@Z) already defined in Bucket.obj
-BucketTest.obj : error LNK2005: "public: class Point & __cdecl Bucket::getPoint(int)" (?getPoint@Bucket@@QEAAAEAVPoint@@H@Z) already defined in Bucket.obj
-BucketTest.obj : error LNK2005: "public: class std::vector<class Point,class std::allocator<class Point> > & __cdecl Bucket::getPointList(void)" (?getPointList@Bucket@@QEAAAEAV?$vector@VPoint@@V?$allocator@VPoint@@@std@@@std@@XZ) already defined in Bucket.obj
-BucketTest.obj : error LNK2005: "public: class std::vector<bool,class std::allocator<bool> > __cdecl Bucket::getQuadrantIndex(void)" (?getQuadrantIndex@Bucket@@QEAA?AV?$vector@_NV?$allocator@_N@std@@@std@@XZ) already defined in Bucket.obj
-BucketTest.obj : error LNK2005: "public: void __cdecl Bucket::push_back(class Point)" (?push_back@Bucket@@QEAAXVPoint@@@Z) already defined in Bucket.obj
-BucketTest.obj : error LNK2005: "public: void __cdecl Bucket::shrink_to_fit(void)" (?shrink_to_fit@Bucket@@QEAAXXZ) already defined in Bucket.obj
-Sort.obj : error LNK2005: "class Range __cdecl SortX(class Bucket)" (?SortX@@YA?AVRange@@VBucket@@@Z) already defined in Main.obj
-Sort.obj : error LNK2005: "class Range __cdecl SortY(class Bucket)" (?SortY@@YA?AVRange@@VBucket@@@Z) already defined in Main.obj
-BucketTest.obj : error LNK2019: unresolved external symbol "public: __cdecl Point::Point(double,double,double,double,double)" (??0Point@@QEAA@NNNNN@Z) referenced in function "public: virtual void __cdecl BucketConstrucitonTestTest::runTest(class TestResult &)" (?runTest@BucketConstrucitonTestTest@@UEAAXAEAVTestResult@@@Z)
-C:\Users\tyler\OneDrive\Documents\GitHub\BarnesHutt-FinalProject\x64\Debug\BarnesHutt.exe : fatal error LNK1120: 1 unresolved externals
+﻿  Bucket.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(5056,13): error C2679: binary '=': no operator found which takes a right-hand operand of type 'const _Ty' (or there is no acceptable conversion)
+          with
+          [
+              _Ty=nullptr
+          ]
+C:\Users\tylerp\Documents\GitHub\BarnesHutt-FinalProject\Point.h(31,1): message : could be 'Point &Point::operator =(const Point &)'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(5056,13): message : while trying to match the argument list '(Point, const _Ty)'
+          with
+          [
+              _Ty=nullptr
+          ]
+C:\Users\tylerp\Documents\GitHub\BarnesHutt-FinalProject\Bucket.cpp(5,7): message : see reference to function template instantiation 'void std::fill<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,nullptr>(const _FwdIt,const _FwdIt,const nullptr &)' being compiled
+          with
+          [
+              _Ty=Point,
+              _FwdIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Point>>>
+          ]
+  BucketTest.cpp
+C:\Users\tylerp\Documents\GitHub\BarnesHutt-FinalProject\BucketTest.cpp(5,1): warning C4100: 'rEsUlT_': unreferenced formal parameter
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(5056,13): error C2679: binary '=': no operator found which takes a right-hand operand of type 'const _Ty' (or there is no acceptable conversion)
+          with
+          [
+              _Ty=nullptr
+          ]
+C:\Users\tylerp\Documents\GitHub\BarnesHutt-FinalProject\Point.h(31,1): message : could be 'Point &Point::operator =(const Point &)'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\xutility(5056,13): message : while trying to match the argument list '(Point, const _Ty)'
+          with
+          [
+              _Ty=nullptr
+          ]
+C:\Users\tylerp\Documents\GitHub\BarnesHutt-FinalProject\Bucket.cpp(5,7): message : see reference to function template instantiation 'void std::fill<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,nullptr>(const _FwdIt,const _FwdIt,const nullptr &)' being compiled
+          with
+          [
+              _Ty=Point,
+              _FwdIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Point>>>
+          ]
+  Failure.cpp
+  Test.cpp
+  TestRegistry.cpp
+  TestResult.cpp
+  WFailure.cpp
+  Main.cpp
+  Point.cpp
+  PointTest.cpp
+  Place.cpp
+  Range.cpp
+  Sort.cpp
+  Generating Code...
