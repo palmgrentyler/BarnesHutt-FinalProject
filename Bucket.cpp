@@ -1,45 +1,82 @@
 #include "Bucket.h"
 
-Bucket::Bucket(std::vector <bool>QuadIndex, std::vector <Point>& BucketPointList) //Creation of a Bucket with a vector of points and a given quadrent index
-	:  quadrantIndex(QuadIndex), pointList(BucketPointList) {};
+Bucket::Bucket() {
 
+};
 
-Bucket::Bucket(std::vector <Point>& BucketPointList)//Creation of a Bucket with only a vector of points
-	: pointList(BucketPointList) {};
-
-Bucket::~Bucket(){}
-
-Point& Bucket::getPoint(int index) { //retuns the point at a given index
-	return pointList[index];
-}
-
-size_t Bucket::getSize() { // returns the size of the Bucket's vector of points
-	return pointList.size();
-}
-
-std::vector<bool> Bucket::getQuadrantIndex() { //returns the current Bucket's quadrant index
-	return quadrantIndex;
-}
-
-void Bucket::PushQuadrantBack(bool index) {
-	quadrantIndex.push_back(index);
-}
-
-std::vector<Point>& Bucket::getPointList(){ //returns the full vector of points
-	return pointList;
-}
-
-Point& Bucket::operator[](int index)
+Bucket::Bucket(unsigned count)  //Creation of a Bucket with a vector of point pointers
 {
-	return pointList[index];
+	parent = NULL;
+
+	indices = new unsigned[count];
+	num_indices = count;
+
+	for (unsigned i = 0; i < count; i++) {
+		indices[i] = i;
+	}
+};
+
+Bucket::~Bucket(){};
+
+void Bucket :: getMinMax(Point *points, unsigned num_points) {
+	min = Point(1E24, 1E24);
+	max = Point(-1E24, -1E24);
+
+	for (unsigned i = 0; i < num_points; i++) {
+		if (points[i].xCor < min.xCor) min.xCor = points[i].xCor;
+		if (points[i].yCor < min.yCor) min.yCor = points[i].yCor;
+		if (points[i].xCor > max.xCor) max.xCor = points[i].xCor;
+		if (points[i].yCor > max.yCor) max.yCor = points[i].yCor;
+	}
 }
 
-void Bucket::shrink_to_fit() //resize the Bucket's vector
-{
-	pointList.shrink_to_fit();
+void Bucket::barnesHuttSort(Bucket *_parent, Point *point_list, unsigned num_points) {
+	Point mid;
+
+	mid = mid.lerp(min, max);
+
+	sort_buckets = new Bucket[4];
+
+	for (unsigned i = 0; i < 4; i++) {
+		sort_buckets[i].parent = _parent;
+		sort_buckets[i].indices = new unsigned[_parent->num_indices];
+		sort_buckets[i].num_indices = 0;
+	}
+
+	sort_buckets[0].min = _parent->min;
+	sort_buckets[0].max = mid;
+
+	sort_buckets[1].min = Point(mid.xCor, _parent->min.yCor);
+	sort_buckets[1].max = Point(_parent->max.xCor, mid.yCor);
+
+	sort_buckets[2].min = Point(_parent->min.xCor, mid.yCor);
+	sort_buckets[2].max = Point(mid.xCor, _parent->max.yCor);
+
+	sort_buckets[3].min = mid;
+	sort_buckets[3].max = _parent->max;
+
+	unsigned sort_index;
+
+	for (unsigned i = 0; i < _parent->num_indices; i++) {
+		unsigned point_index;
+
+		point_index = indices[i];
+
+		sort_index = point_list[point_index].xCor > mid.xCor;
+		sort_index |= (point_list[point_index].yCor > mid.yCor) << 1;
+
+		Bucket* sort_bucket; 
+
+		sort_bucket = &sort_buckets[sort_index];
+
+		sort_bucket->indices[sort_bucket->num_indices] = i;
+		sort_bucket->num_indices++;
+	}
+
+	for (int i = 0; i < 4; i++) {
+		if (sort_buckets[i].num_indices > 1) {
+			barnesHuttSort(&sort_buckets[i], point_list, num_points);
+		}
+	}
 }
 
-void Bucket::push_back(Point p) //Place a point in the Bucket's vector
-{
-	pointList.push_back(p);
-}

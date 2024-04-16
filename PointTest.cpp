@@ -3,26 +3,26 @@
 #include <sstream>
 
 TEST(Constructor, Point) {
-    float x = 4;
-    float y = 10;
-    float mass = 30;
-    float vecX = 43;
-    float vecY = 0.0;
+    double x = 4;
+    double y = 10;
+    double mass = 30;
+    double vecX = 43;
+    double vecY = 0.0;
 
-    Point p{x, y, mass, vecX, vecY}; //Contruct the point
-    CHECK_DOUBLES_EQUAL(4.0, p.getX(), 0.0001); //Check the contents
-    CHECK_DOUBLES_EQUAL(10.0, p.getY(), 0.0001);
-    CHECK_DOUBLES_EQUAL(30.0, p.getMass(), 0.0001);
-    CHECK_DOUBLES_EQUAL(43.0, p.getVecX(), 0.0001);
-    CHECK_DOUBLES_EQUAL(0.0, p.getVecY(), 0.0001);
+    Point p{ x, y, mass, vecX, vecY }; //Contruct the point
+    CHECK_DOUBLES_EQUAL(4.0,    p.getX(),       0.0001); //Check the contents
+    CHECK_DOUBLES_EQUAL(10.0,   p.getY(),       0.0001);
+    CHECK_DOUBLES_EQUAL(30.0,   p.getMass(),    0.0001);
+    CHECK_DOUBLES_EQUAL(43.0,   p.getVecX(),    0.0001);
+    CHECK_DOUBLES_EQUAL(0.0,    p.getVecY(),    0.0001);
 }
 
 TEST(OverwriteValues, Point) {
-    float x = 4;
-    float y = 10;
-    float mass = 30;
-    float vecX = 43;
-    float vecY = 0.0;
+    double x = 4;
+    double y = 10;
+    double mass = 30;
+    double vecX = 43;
+    double vecY = 0.0;
 
     Point p{ x, y, mass, vecX, vecY }; //Contruct the point
 
@@ -31,9 +31,9 @@ TEST(OverwriteValues, Point) {
     p.setVecX(743.5f);
     p.setVecY(31.34f);
 
-    CHECK_DOUBLES_EQUAL(8.0, p.getX(), 0.0001); //Check the contents
-    CHECK_DOUBLES_EQUAL(60.4, p.getY(), 0.0001);
-    CHECK_DOUBLES_EQUAL(30.0, p.getMass(), 0.0001);
-    CHECK_DOUBLES_EQUAL(743.5, p.getVecX(), 0.0001);
-    CHECK_DOUBLES_EQUAL(31.34, p.getVecY(), 0.0001);
+    CHECK_DOUBLES_EQUAL(8.0,    p.getX(),       0.0001); //Check the contents
+    CHECK_DOUBLES_EQUAL(60.4,   p.getY(),       0.0001);
+    CHECK_DOUBLES_EQUAL(30.0,   p.getMass(),    0.0001);
+    CHECK_DOUBLES_EQUAL(743.5,  p.getVecX(),    0.0001);
+    CHECK_DOUBLES_EQUAL(31.34,  p.getVecY(),    0.0001);
 }

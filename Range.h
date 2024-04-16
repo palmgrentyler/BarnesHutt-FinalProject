@@ -1,16 +1,17 @@
 #pragma once
+#pragma once
 
 #include "Point.h"
 
 class Range {
 public:
-	Range(float Min, float Max);
+	Range(double MinRange, double MaxRange);
 	~Range();
 
-	float getMax();
-	float getMin();
+	double getMax();
+	double getMin();
 
 private:
-	float Min;
-	float Max;
+	double MinRange;
+	double MaxRange;
 };

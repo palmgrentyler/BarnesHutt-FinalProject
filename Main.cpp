@@ -1,25 +1,15 @@
 #include "TestHarness.h"
 #include <iostream>
 #include "Bucket.h"
-#include "Sort.cpp"
-#include "place.cpp"
 
 int main()
 {
 
-	/*Bucket temp;
+//random number generator used in some tests
+	srand(::time_t(NULL));
 
-	Range xRange = SortX(temp);
-	Range yRange = SortY(temp);
+	TestResult tr;
+	TestRegistry::runAllTests(tr);
 
-	Place(temp, xRange.getMin(), xRange.getMax(), yRange.getMin(), yRange.getMax());
-*/
-
-  // random number generator used in some tests
-  srand(::time_t(NULL));
-
-  TestResult tr;
-  TestRegistry::runAllTests(tr);
-
-  return 0;
+	return 0;
 }

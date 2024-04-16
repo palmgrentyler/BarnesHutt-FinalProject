@@ -5,18 +5,15 @@ CXXFLAGS += -std=c++20 -Wall -Werror
 # -Wall: reports all warnings
 # -Werror: warnings reported as errors
 
-OBJ = CppUnitLite/Failure.o CppUnitLite/Test.o CppUnitLite/TestRegistry.o CppUnitLite/TestResult.o CppUnitLite/WFailure.o \
-      Circle.o CircleTest.o Point.o PointTest.o Rectangle.o RectangleTest.o ShapeTest.o Triangle.o TriangleTest.o \
-      Main.o 
-      
+OBJ = CppUnitLite/Failure.o CppUnitLite/Test.o CppUnitLite/TestRegistry.o CppUnitLite/TestResult.o CppUnitLite/WFailure.o XxxTest.o Main.o
 %.o: %.cpp
 	$(CC) -c -o $@ $< $(CFLAGS) $(CXXFLAGS)
 
-Assignment8: $(OBJ)
+ExampleProgram: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(CXXFLAGS)
 
 
-all: Assignment8
+all: ExampleProgram
 
 clean:
 	rm *.o
